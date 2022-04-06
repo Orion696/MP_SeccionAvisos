@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "mp-seccion-avisos-client-side-solution",
+    "id": "447d4d94-1e06-4f64-b8d9-5dd5ecd5829c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "mp-seccion-avisos description"
+      },
+      "longDescription": {
+        "default": "mp-seccion-avisos description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "mp-seccion-avisos Feature",
+        "description": "The feature that activates elements of the mp-seccion-avisos solution.",
+        "id": "5166d9bd-51d1-4593-bc5d-703037f9e718",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/mp-seccion-avisos.sppkg"
+  }
+}

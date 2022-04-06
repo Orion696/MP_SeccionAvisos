@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "mp-seccion-avisos",
+    "libraryId": "447d4d94-1e06-4f64-b8d9-5dd5ecd5829c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "mp-seccion-avisos",
+    "solutionShortDescription": "mp-seccion-avisos description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

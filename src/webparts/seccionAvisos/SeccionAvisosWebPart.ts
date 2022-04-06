@@ -3,6 +3,9 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
+  IPropertyPaneDropdownOption,
+  PropertyPaneDropdown,
+  PropertyPaneSlider,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -11,19 +14,29 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'SeccionAvisosWebPartStrings';
 import SeccionAvisos from './components/SeccionAvisos';
 import { ISeccionAvisosProps } from './components/ISeccionAvisosProps';
-
+import { spfi, SPFx } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 export interface ISeccionAvisosWebPartProps {
-  description: string;
-}
+    description: string;
+    ListName: string;
+    Cantidad:string;  
+  }
+  
 
 export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccionAvisosWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+  private _dropdownOptions: IPropertyPaneDropdownOption[] = [];
 
-  protected onInit(): Promise<void> {
-    this._environmentMessage = this._getEnvironmentMessage();
-
+  protected async onInit(): Promise<void> {
+    const  sp =spfi().using(SPFx(this.context));
+    const ListTitles:any= await sp.web.lists.filter('Hidden eq false')();
+     this._dropdownOptions = ListTitles.map((list) => ({key: list.Title,text: list.Title}));
+  
+    // this._environmentMessage = this._getEnvironmentMessage();
     return super.onInit();
   }
 
@@ -35,7 +48,10 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context:this.context,
+        ListName:this.properties.ListName,
+        Count:this.properties.Cantidad
       }
     );
 
@@ -72,8 +88,32 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    let message=[]
+    message.push(
+    
+      PropertyPaneDropdown('ListName', {
+        label: strings.ListNameFieldLabel,
+        options:this._dropdownOptions
+      })
+    )
+    message.push(  PropertyPaneTextField('description', {
+      label: strings.DescriptionFieldLabel
+    }));
+    message.push(
+      PropertyPaneTextField('Title', {
+        label: strings.TitleFieldLabel
+      })
+    );
+   
+    message.push(
+      PropertyPaneSlider('Cantidad', {
+        label: strings.CantidadFieldLabel,
+        min:4,
+        max:20,        
+      })
+    )
+    
     return {
       pages: [
         {
@@ -83,15 +123,12 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
           groups: [
             {
               groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
+              groupFields: message
             }
           ]
         }
       ]
     };
   }
+
 }

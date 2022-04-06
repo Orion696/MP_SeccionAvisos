@@ -6,6 +6,9 @@ declare interface ISeccionAvisosWebPartStrings {
   AppLocalEnvironmentTeams: string;
   AppSharePointEnvironment: string;
   AppTeamsTabEnvironment: string;
+  ListNameFieldLabel: string;
+  TitleFieldLabel: string;
+  CantidadFieldLabel:string;
 }
 
 declare module 'SeccionAvisosWebPartStrings' {

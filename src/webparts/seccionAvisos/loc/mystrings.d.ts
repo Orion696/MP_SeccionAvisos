@@ -7,6 +7,7 @@ declare interface ISeccionAvisosWebPartStrings {
   AppSharePointEnvironment: string;
   AppTeamsTabEnvironment: string;
   ListNameFieldLabel: string;
+  ListNameAFieldLabel: string;
   TitleFieldLabel: string;
   CantidadFieldLabel:string;
 }

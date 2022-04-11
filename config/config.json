@@ -6,13 +6,15 @@
       "components": [
         {
           "entrypoint": "./lib/webparts/seccionAvisos/SeccionAvisosWebPart.js",
-          "manifest": "./src/webparts/seccionAvisos/SeccionAvisosWebPart.manifest.json"
+          "manifest": "./src/webparts/seccionAvisos/SeccionAvisosWebPart.manifest.json",
+          "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "SeccionAvisosWebPartStrings": "lib/webparts/seccionAvisos/loc/{locale}.js"
+    "SeccionAvisosWebPartStrings": "lib/webparts/seccionAvisos/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

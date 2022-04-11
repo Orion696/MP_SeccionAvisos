@@ -8,5 +8,6 @@ export interface ISeccionAvisosProps {
   userDisplayName: string;
   context:WebPartContext;
   ListName:string;
+  ListNameA:string;
   Count:string;
 }

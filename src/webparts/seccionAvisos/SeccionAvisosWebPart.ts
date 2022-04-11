@@ -21,6 +21,7 @@ import "@pnp/sp/items";
 export interface ISeccionAvisosWebPartProps {
     description: string;
     ListName: string;
+    ListNameA: string;
     Cantidad:string;  
   }
   
@@ -51,6 +52,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
         userDisplayName: this.context.pageContext.user.displayName,
         context:this.context,
         ListName:this.properties.ListName,
+        ListNameA:this.properties.ListNameA,
         Count:this.properties.Cantidad
       }
     );
@@ -94,6 +96,13 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
     
       PropertyPaneDropdown('ListName', {
         label: strings.ListNameFieldLabel,
+        options:this._dropdownOptions
+      })
+    )
+    message.push(
+    
+      PropertyPaneDropdown('ListNameA', {
+        label: strings.ListNameAFieldLabel,
         options:this._dropdownOptions
       })
     )

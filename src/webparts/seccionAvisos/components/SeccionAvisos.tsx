@@ -7,6 +7,7 @@ import { Placeholder } from '@pnp/spfx-controls-react';
 import Comunicados from './Avisos/Comunicados';
 import { useEffect, createContext } from 'react';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import Avisos from './Avisos/Avisos';
 
 interface contextSP{
   context:WebPartContext;
@@ -17,11 +18,12 @@ interface contextSP{
 const SeccionAvisos = (props: ISeccionAvisosProps) => {
   const {
     description,
+    ListNameA,
     ListName,
     context,
     Count
   } = props;
-
+ console.log(props);
   const [modal, setModal] = React.useState(false);
   const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 },
@@ -55,7 +57,7 @@ const SeccionAvisos = (props: ISeccionAvisosProps) => {
             <Comunicados ListName={ListName} Count={Count} />
           </PivotItem>
           <PivotItem headerText="Anuncios">
-            <Label styles={labelStyles}>Pivot #2</Label>
+            <Label styles={labelStyles}><Avisos ListName={ListNameA} Count={Count}/></Label>
           </PivotItem>
           <PivotItem headerText="Fechas Especiales">
             <Label styles={labelStyles}>Pivot #3</Label>

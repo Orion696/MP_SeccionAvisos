@@ -4,7 +4,7 @@ define([], function() {
     "BasicGroupName": "Group Name",
     "DescriptionFieldLabel": "Description Field",
     "ListNameFieldLabel":" Nombre de lista para Comunicados",
-    "ListNameAFieldLabel":" Nombre de lista para Avisos",
+    "ListNameAFieldLabel":" Nombre de lista para Anuncios",
     "CantidadFieldLabel":"Cantidad de elementos a mostrar",
     "TitleFieldLabel":"Título componente",
     "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",

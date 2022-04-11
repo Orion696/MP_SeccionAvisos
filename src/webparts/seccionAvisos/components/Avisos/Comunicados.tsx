@@ -13,6 +13,8 @@ import style from '../SeccionAvisos.module.scss'
 import Grid from '@material-ui/core/Grid';
 import ModalTools from '../tools/Modal'
 import * as moment from 'moment';
+import Carousel from 'react-grid-carousel'
+
 const Comunicados= (props)=>{
     const context=useContext(SPContext);
     const sp = spfi().using(SPFx(context.context));
@@ -37,8 +39,12 @@ const Comunicados= (props)=>{
 
   return(<> 
    <Grid container spacing={2}>
-     {data.length>0 && data.map((item,index)=>
-      <Grid item xs={12} sm={6}>
+   
+    
+     {data.length>0 ? <Carousel cols={2} rows={1} gap={10} loop>
+      {data.map((item,index)=>
+<Carousel.Item>
+    
     <div className={style.row}>
   <div className={`${style.example1} ${style.card}`}>
     <div className={style.wrapper}>
@@ -54,12 +60,11 @@ const Comunicados= (props)=>{
 		 </div>
       
       <div className={style.data}>
-        <div className={style.content}>
+        <div className={style.contentC}>
           {/* <span className={style.author}>Jane Doe</span> */}
           <h3 className={style.title}><a href="#" className={style.cardTitle}>{item.Title}</a></h3>
           <p className={style.text}>{(item.Comunicados as string).substring(0,150)}</p>
-        
-            <DefaultButton onClick={()=>{context.onChangeContext(context.modal),setIndex(index)}} text="Open Modal" />
+          <DefaultButton onClick={()=>{context.onChangeContext(context.modal),setIndex(index)}} text="Ver más" />
         </div>
       </div>
       
@@ -67,10 +72,10 @@ const Comunicados= (props)=>{
   </div>
 </div>
 
-      </Grid>
+    
+      </Carousel.Item>
+     )}</Carousel> :"No exiten elementos"}
      
-     
-     )}
       {context.modal && <ModalTools data={data} index={index} /> }
  </Grid>
  </>)

@@ -87,6 +87,16 @@ body {
       z-index: 1;
     }
   }
+  .dataA {
+	  float: right;
+    width: 100%;
+	  height: 100%;
+    .content {
+      padding: 1em;
+      position: relative;
+      z-index: 1;
+    }
+  }
   .author {
     font-size: 12px;
   }
@@ -131,6 +141,11 @@ body {
       font-size: 12px;
     }
   }
+  .contentC {
+    background-color: $white;
+    box-shadow: 0 5px 30px 10px rgba($black, 0.3);
+    min-height: 233px;
+  }
   .content {
     background-color: $white;
     box-shadow: 0 5px 30px 10px rgba($black, 0.3);
@@ -145,6 +160,10 @@ body {
 .image {
 	float: left;
 	width: 40%;
+}
+.imageA {
+	float: left;
+	width: 100%;
 }
 
 .bookimage {

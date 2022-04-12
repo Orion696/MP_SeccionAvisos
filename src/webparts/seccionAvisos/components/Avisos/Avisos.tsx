@@ -60,8 +60,7 @@ const Avisos = (props) => {
                                     <div className={style.dataA}>
                                         <div className={style.content}>
                                     <Stack horizontalAlign='center' >
-                                    <h3 className={style.title}> <a   href="#" className={style.cardTitle}></a></h3>
-                                    <DefaultButton onClick={()=> {context.onChangeContext(context.modal),setIndex(index)}} text="Ver más"/> 
+                                    <a className={style.textcolor}  href="#" onClick={()=>{context.onChangeContext(context.modal),setIndex(index)}} >Ver más </a>
                                      {/* <PrimaryButton text="Ver más" onFocus={() => { context.onChangeContext(context.modal);setIndex(index); }} allowDisabledFocus  /> */}
                                    </Stack>
                                       </div>

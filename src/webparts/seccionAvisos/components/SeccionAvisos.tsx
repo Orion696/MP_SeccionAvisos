@@ -39,6 +39,7 @@ const SeccionAvisos = (props: ISeccionAvisosProps) => {
   }
 
   return (<>
+  <h2 className={styles.textcolor}>Avisos</h2>
     {ListName == undefined ?
       <Placeholder iconName='Edit'
         iconText='Configura el webpart'

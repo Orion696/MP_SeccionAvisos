@@ -83,7 +83,7 @@ body {
 	  float: right;
     width: 60%;
 	 height: 100%;
-    .content {
+ .content {
       padding: 1em;
       position: relative;
       z-index: 1;
@@ -145,20 +145,21 @@ body {
   }
   .contentC {
     background-color: $white;
-    box-shadow: 0 5px 30px 10px rgba($black, 0.3);
     min-height: 233px;
+    padding: 14px;
   }
   .content {
-    background-color: $white;
-    box-shadow: 0 5px 30px 10px rgba($black, 0.3);
-  }
+    background-color: $white;    
+   }
   .title {
     a {
       color: lighten($black, 50%);
     }
   }
 }
-
+.button{
+  padding-left: 15%;
+}
 .image {
 	float: left;
 	width: 40%;
@@ -174,6 +175,7 @@ body {
 	height: 80%;
 	margin-top: auto;
 	margin-bottom: auto;
+  max-height: 230px;
 }
 
 .textcolor{

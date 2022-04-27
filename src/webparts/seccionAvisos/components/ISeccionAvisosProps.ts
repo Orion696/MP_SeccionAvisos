@@ -2,14 +2,15 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { DefaultPalette, IStackStyles, IStackTokens } from "office-ui-fabric-react";
 
 export interface ISeccionAvisosProps {
-  description: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
   context:WebPartContext;
+  Title:string;
   ListName:string;
   ListNameA:string;
+  ListNameE:string;
   Count:string;
 }
 

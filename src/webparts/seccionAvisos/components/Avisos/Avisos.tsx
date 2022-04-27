@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useContext, useEffect, useState } from 'react';
 import { useId, useBoolean } from '@fluentui/react-hooks';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { IStyleSet, Label, ILabelStyles, Pivot, PivotItem, Modal, IconButton, IButtonStyles, getTheme, mergeStyleSets, FontWeights, IIconProps, IDragOptions, ContextualMenu, DefaultButton, PrimaryButton, Stack, CommandBarButton } from '@fluentui/react';
+import { IStyleSet, Label, ILabelStyles, Pivot, PivotItem, Modal, IconButton, IButtonStyles, getTheme, mergeStyleSets, FontWeights, IIconProps, IDragOptions, ContextualMenu, DefaultButton, PrimaryButton, Stack, CommandBarButton, Shimmer } from '@fluentui/react';
 import { SPContext } from '../SeccionAvisos';
 import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
@@ -28,7 +28,7 @@ const Avisos = (props) => {
             let getData: [];
             let cantidad = Count == undefined ? 4 : parseInt(Count);
             try {
-                getData = await sp.web.lists.getByTitle(ListName).items.orderBy("Fecha", false).select("*").top(cantidad)()
+                getData = await sp.web.lists.getById(ListName).items.orderBy("Fecha", false).select("*").top(cantidad)()
                 setData(getData)
             } catch (error) {
                 console.log(error);
@@ -40,8 +40,8 @@ const Avisos = (props) => {
     const addIcon: IIconProps = { iconName: 'Add' };
     return (<>
         <Grid container>
+            {data.length>0?
             <Carousel cols={4} rows={1} gap={5} loop showDots>
-
                 {data.length > 0 && data.map((item, index) => (
                 <Carousel.Item >
                         <div className={style.row}>
@@ -72,7 +72,8 @@ const Avisos = (props) => {
                         </div>
                 </Carousel.Item>))}
             </Carousel>
-            {context.modal && <ModalToolsAnun data={data} index={index} />}
+            // {context.modal && <ModalToolsAnun data={data} index={index} />}
+        :<Shimmer width="100%"></Shimmer>}
         </Grid>
     </>)
 }

@@ -20,9 +20,10 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
 export interface ISeccionAvisosWebPartProps {
-    description: string;
+    Title:string;
     ListName: string;
     ListNameA: string;
+    ListNameE: string;
     Cantidad:string;  
   }
   
@@ -36,7 +37,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
   protected async onInit(): Promise<void> {
     const  sp =spfi().using(SPFx(this.context));
     const ListTitles:any= await sp.web.lists.filter('Hidden eq false')();
-     this._dropdownOptions = ListTitles.map((list) => ({key: list.Title,text: list.Title}));
+    this._dropdownOptions = ListTitles.map((list) => ({key: list.Id,text: list.Title}));
   
     // this._environmentMessage = this._getEnvironmentMessage();
     return super.onInit();
@@ -45,8 +46,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
   public render(): void {
     const element: React.ReactElement<ISeccionAvisosProps> = React.createElement(
       SeccionAvisos,
-      {
-        description: this.properties.description,
+      { Title:this.properties.Title,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -54,6 +54,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
         context:this.context,
         ListName:this.properties.ListName,
         ListNameA:this.properties.ListNameA,
+        ListNameE:this.properties.ListNameE,
         Count:this.properties.Cantidad
       }
     );
@@ -97,7 +98,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
     
       PropertyPaneDropdown('ListName', {
         label: strings.ListNameFieldLabel,
-        options:this._dropdownOptions
+        options:this._dropdownOptions 
       })
     )
     message.push(
@@ -107,9 +108,13 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
         options:this._dropdownOptions
       })
     )
-    message.push(  PropertyPaneTextField('description', {
-      label: strings.DescriptionFieldLabel
-    }));
+    message.push(
+    PropertyPaneDropdown('ListNameE', {
+        label: strings.ListNameEFieldLabel,
+        options:this._dropdownOptions
+      })
+    )
+   
     message.push(
       PropertyPaneTextField('Title', {
         label: strings.TitleFieldLabel

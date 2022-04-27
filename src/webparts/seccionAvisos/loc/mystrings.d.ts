@@ -8,6 +8,7 @@ declare interface ISeccionAvisosWebPartStrings {
   AppTeamsTabEnvironment: string;
   ListNameFieldLabel: string;
   ListNameAFieldLabel: string;
+  ListNameEFieldLabel: string;
   TitleFieldLabel: string;
   CantidadFieldLabel:string;
 }

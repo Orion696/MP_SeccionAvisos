@@ -8,6 +8,7 @@ import Comunicados from './Avisos/Comunicados';
 import { useEffect, createContext } from 'react';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import Avisos from './Avisos/Avisos';
+import Eventos from './Avisos/Eventos';
 
 interface contextSP{
   context:WebPartContext;
@@ -17,7 +18,8 @@ interface contextSP{
 }
 const SeccionAvisos = (props: ISeccionAvisosProps) => {
   const {
-    description,
+    Title,    
+    ListNameE,
     ListNameA,
     ListName,
     context,
@@ -39,7 +41,7 @@ const SeccionAvisos = (props: ISeccionAvisosProps) => {
   }
 
   return (<>
-  <h2 className={styles.textcolor}>Avisos</h2>
+  <h2 className={styles.textcolor}>{Title}</h2>
     {ListName == undefined ?
       <Placeholder iconName='Edit'
         iconText='Configura el webpart'
@@ -47,12 +49,12 @@ const SeccionAvisos = (props: ISeccionAvisosProps) => {
         buttonLabel='Configurar'
         onConfigure={_onConfigure} /> :
       <SPContext.Provider value={{context:context,anuncio:false,modal:modal,onChangeContext}} >
-        <Pivot aria-label="Basic Pivot Example">
+        <Pivot aria-label="Avisos">
           <PivotItem
             headerText="Comunicados"
             headerButtonProps={{
               'data-order': 1,
-              'data-title': 'My Files Title',
+              'data-title': 'Comunicados',
             }}
           >
             <Comunicados ListName={ListName} Count={Count} />
@@ -61,44 +63,11 @@ const SeccionAvisos = (props: ISeccionAvisosProps) => {
             <Label styles={labelStyles}><Avisos ListName={ListNameA} Count={Count}/></Label>
           </PivotItem>
           <PivotItem headerText="Fechas Especiales">
-            <Label styles={labelStyles}>Pivot #3</Label>
+            <Label styles={labelStyles}><Eventos ListName={ListNameE} Count={Count}/></Label>
           </PivotItem>
         </Pivot>
       </SPContext.Provider>
     }</>)
 }
 export default SeccionAvisos;
-// export default class SeccionAvisos extends React.Component<ISeccionAvisosProps, {}> {
-//   public render(): React.ReactElement<ISeccionAvisosProps> {
-
-
-//     return (
-//       <section className={`${styles.seccionAvisos} ${hasTeamsContext ? styles.teams : ''}`}>
-//         <div className={styles.welcome}>
-//           <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-//           <h2>Well done, {escape(userDisplayName)}!</h2>
-//           <div>{environmentMessage}</div>
-//           <div>Web part property value: <strong>{escape(description)}</strong></div>
-//         </div>
-//         <div>
-//           <h3>Welcome to SharePoint Framework!</h3>
-//           <p>
-//             The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-//           </p>
-//           <h4>Learn more about SPFx development:</h4>
-//           <ul className={styles.links}>
-//             <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-//             <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-//             <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-//             <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-//             <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-//             <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-//             <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-//           </ul>
-//         </div>
-//       </section>
-//     );
-//   }
-// }
-
 export const SPContext = createContext<contextSP>({context:{} as WebPartContext,anuncio:false,modal:false,onChangeContext:(isModal)=>isModal});

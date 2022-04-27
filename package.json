@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.64.1",
+    "@fluentui/react-cards": "^0.202.26",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@microsoft/rush-stack-compiler-4.2": "^0.1.2",
@@ -24,9 +25,11 @@
     "@pnp/spfx-controls-react": "3.7.2",
     "@react-pdf/renderer": "^2.1.1",
     "html2pdf.js": "^0.10.1",
+    "ics-js": "^0.10.2",
     "jspdf": "^2.5.1",
     "moment": "^2.29.2",
     "office-ui-fabric-react": "7.174.1",
+    "package": "^1.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-grid-carousel": "^1.0.1"

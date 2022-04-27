@@ -69,9 +69,9 @@ const Comunicados= (props)=>{
            
            }
 
-  return(<> 
-   <Grid container spacing={2}>
-     {data.length>0 ? <Carousel cols={2} rows={1} gap={10} loop>
+  return(<Stack> 
+ 
+     {data.length>0 ? <Carousel cols={2} rows={1} gap={10} >
       {data.map((item,index)=>
 <Carousel.Item>
     
@@ -108,8 +108,7 @@ const Comunicados= (props)=>{
      )}</Carousel> :"No exiten elementos"}
      
       {context.modal && <ModalTools data={data} index={index} /> }
- </Grid>
- </>)
+  </Stack>)
 }
 
 export default Comunicados;

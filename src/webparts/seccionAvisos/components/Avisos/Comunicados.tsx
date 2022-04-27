@@ -29,7 +29,7 @@ const Comunicados= (props)=>{
           let getData:[];
           let cantidad=Count==undefined?4:parseInt(Count);
             try {        
-               getData=await sp.web.lists.getByTitle(ListName).items.orderBy("Fecha", false).select("*").top(cantidad)() 
+               getData=await sp.web.lists.getById(ListName).items.orderBy("Fecha", false).select("*").top(cantidad)() 
                setData(getData)
              } catch (error) {
                  console.log(error);
@@ -71,8 +71,6 @@ const Comunicados= (props)=>{
 
   return(<> 
    <Grid container spacing={2}>
-   
-    
      {data.length>0 ? <Carousel cols={2} rows={1} gap={10} loop>
       {data.map((item,index)=>
 <Carousel.Item>

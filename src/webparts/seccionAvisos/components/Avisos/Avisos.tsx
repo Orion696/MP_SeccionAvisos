@@ -35,10 +35,11 @@ const Avisos = (props) => {
             }
         }
         fecthData();
-    }, [])
+    }, []) 
 
     const addIcon: IIconProps = { iconName: 'Add' };
     return (<>
+            {context.modal && <ModalToolsAnun data={data} index={index} />}
         <Grid container>
             {data.length>0?
             <Carousel cols={4} rows={1} gap={5} loop showDots>
@@ -72,8 +73,8 @@ const Avisos = (props) => {
                         </div>
                 </Carousel.Item>))}
             </Carousel>
-            // {context.modal && <ModalToolsAnun data={data} index={index} />}
-        :<Shimmer width="100%"></Shimmer>}
+             :
+       <Shimmer width="100%"></Shimmer>}
         </Grid>
     </>)
 }

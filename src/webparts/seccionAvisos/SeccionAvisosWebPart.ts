@@ -18,6 +18,7 @@ import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
+import { List } from '@material-ui/core';
 
 export interface ISeccionAvisosWebPartProps {
     Title:string;
@@ -33,12 +34,14 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
   private _dropdownOptions: IPropertyPaneDropdownOption[] = [];
+  private _dropdownCalendar: IPropertyPaneDropdownOption[] = [];
 
   protected async onInit(): Promise<void> {
     const  sp =spfi().using(SPFx(this.context));
     const ListTitles:any= await sp.web.lists.filter('Hidden eq false')();
+    console.log(ListTitles);
     this._dropdownOptions = ListTitles.map((list) => ({key: list.Id,text: list.Title}));
-  
+    this._dropdownCalendar=ListTitles.filter((list)=> list.BaseTemplate===106).map((list) => ({key: list.Id,text: list.Title}));
     // this._environmentMessage = this._getEnvironmentMessage();
     return super.onInit();
   }
@@ -111,7 +114,7 @@ export default class SeccionAvisosWebPart extends BaseClientSideWebPart<ISeccion
     message.push(
     PropertyPaneDropdown('ListNameE', {
         label: strings.ListNameEFieldLabel,
-        options:this._dropdownOptions
+        options:this._dropdownCalendar
       })
     )
    

@@ -1,73 +1,36 @@
-# mp-seccion-avisos
+1. Avisos Componente
 
-## Summary
+Función:
+Muestra una serie de avisos en un carrusel.
+Al hacer clic en un aviso, se abre un modal con más detalles.
+Librerías y Módulos Utilizados:
+react, moment, @fluentui/react-hooks, @fluentui/react, @microsoft/sp-lodash-subset, @pnp/sp, @microsoft/sp-webpart-base, @material-ui/core/Grid, react-grid-carousel.
+Interacciones:
+Carga datos desde una lista de SharePoint.
+Los avisos se muestran en un carrusel.
+Al hacer clic en "Ver más", se muestra más información en un modal.
+2. Comunicados Componente
 
-Short summary on functionality and used technologies.
+Función:
+Muestra comunicados.
+Los comunicados pueden ser descargados como PDF.
+Al hacer clic en un comunicado, se abre un modal con más detalles.
+Librerías y Módulos Utilizados:
+react, moment, @fluentui/react-hooks, @fluentui/react, @microsoft/sp-lodash-subset, @pnp/sp, @microsoft/sp-webpart-base, @material-ui/core/Grid, react-grid-carousel, jspdf, html2pdf.js.
+Interacciones:
+Carga comunicados desde una lista de SharePoint.
+Puede generar un PDF de un comunicado específico.
+3. Eventos Componente
 
-[picture of the solution in action, if possible]
+Función:
+Muestra eventos en tarjetas.
+Si el usuario tiene permisos, puede añadir un nuevo evento.
+Librerías y Módulos Utilizados:
+react, moment, @fluentui/react/lib/DocumentCard, @fluentui/react, @pnp/sp, react-grid-carousel, @pnp/spfx-controls-react/lib/SecurityTrimmedControl, @microsoft/sp-page-context.
+Interacciones:
+Carga eventos desde una lista de SharePoint.
+Los eventos se muestran en tarjetas.
+Si el usuario tiene permiso, se muestra un botón para añadir un nuevo evento.
+Resumen:
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.13-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-Solution|Author(s)
---------|---------
-folder name | Author details (name, company, twitter alias with link)
-
-## Version history
-
-Version|Date|Comments
--------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
-
-## Features
-
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
-
-## References
-
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+Estos componentes están diseñados para integrarse con SharePoint y muestran avisos, comunicados y eventos. Se hacen uso de varias librerías y módulos para proporcionar funcionalidad y diseño. El componente de avisos y comunicados tienen funcionalidades similares en términos de mostrar información en un carrusel y abrir detalles en un modal. El componente de eventos se centra en mostrar eventos y permitir al usuario (con los permisos adecuados) añadir nuevos eventos.
